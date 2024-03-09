@@ -22,3 +22,7 @@ standup run <git_sha>
 
 * Allow not passing a `git_sha` using a timebased param instead. eg `1 day`. 
 * Allow a custom prompt.
+
+### Credits:
+
+Most of the logic was copied or heavily inspired by the [git-llm](https://github.com/rsaryev/git-llm) project.
