@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "standup-llm"
+version = "0.1.0"
+description = "Standup notes generator via git messages and diffs powered by llms"
+authors = ["Craig Mulligan <git@craigmulligan.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+gitpython = "^3.1.42"
+fire = "^0.5.0"
+langchain = "^0.1.11"
+langchain-community = "^0.0.27"
+questionary = "^2.0.1"
+langchain-openai = "^0.0.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+standup = "standup_llm.cli:main"
