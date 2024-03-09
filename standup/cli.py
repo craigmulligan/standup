@@ -1,8 +1,8 @@
 import fire
-from standup_llm.config import get_config, save_config, DEFAULT_CONFIG
-from standup_llm.llm import llm_factory
-from standup_llm.utils import Git
-from standup_llm.prompts import prompt
+from standup.config import get_config, save_config, DEFAULT_CONFIG
+from standup.llm import llm_factory
+from standup.utils import Git
+from standup.prompts import prompt
 import questionary
 
 
