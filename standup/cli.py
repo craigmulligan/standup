@@ -20,7 +20,7 @@ class Standup():
         git = Git()
         llm = llm_factory(config)
         logs = git.logs(sha)
-        full_log = "\n\n\n".join([f"""message:\n {log["commit"].message}\n\nauthor: {log["commit"].author.name}\n\ndiff:\n\n{log['diffs']}""" for log in logs])
+        full_log = "\n\n\n".join([f"""message:\n {log["commit"].message}\nauthor: {log["commit"].author.name}\n\ndiff:\n\n{log['diffs']}""" for log in logs])
 
         docs = llm.text_splitter(full_log)
         output = llm.summarize_docs(docs, prompt)

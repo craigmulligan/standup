@@ -16,23 +16,18 @@ class Git:
 
     def logs(self, target_sha: str) -> List[Log]:  
         logs: List[Log] = []
-        commits = list(self.repo.iter_commits('HEAD', max_count=50))
 
-        filtered_commits = []
-        for commit in commits:
-            filtered_commits.append(commit)
-            if commit.hexsha == target_sha:
-                break
-
-        for commit in filtered_commits:
-            if commit.parents:
+        for commit in self.repo.iter_commits('HEAD'):
+            # excludes merge commits
+            if len(commit.parents) <= 1:  
                 diff_body = []
                 diffs = commit.diff(commit.parents[0], create_patch=True)
                 for diff in diffs:
                     diff_body.append(diff.diff.decode('utf-8'))
 
                 logs.append({ "commit": commit, "diffs": "\n".join(diff_body)})
-            else:
-                logs.append({ "commit": commit, "diffs": "" })
+            # got to the target_sha
+            if commit.hexsha == target_sha:
+                break
 
         return logs
